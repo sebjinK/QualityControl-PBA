@@ -1,0 +1,198 @@
+/* add gap between datatable buttons */
+.dt-buttons {
+  gap: 0.5em;
+  padding: 0.75em 0;
+}
+
+/* add spacing above and below table */
+.dataTable {
+  margin-bottom: 0.75em;
+  overflow: hidden;
+}
+
+/* change padding of cells */
+.dataTable td,
+.dataTable th {
+  padding: 0.5em 1em;
+  text-align: left !important;
+}
+
+/* change bg color of header bar */
+.dataTable thead th {
+  background-color: #f4f4f4;
+}
+
+/* change row color on hover */
+.dataTable tbody tr:hover {
+  background-color: #f4f4f4;
+}
+
+/* ROUND TABLE CORNERS */
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: solid #dddddd 1px;
+  border-radius: 12px;
+}
+
+.dt-scroll-head table {
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
+.dt-scroll-body table {
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+
+.dt-scroll-body {
+  bottom: 1px;
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+
+.dt-scroll-body thead {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+td,
+th {
+  border-left: solid #dddddd 1px;
+  border-top: solid #dddddd 1px;
+}
+
+th {
+  background-color: blue;
+  border-top: none;
+}
+
+td:first-child,
+th:first-child {
+  border-left: none;
+}
+
+thead {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+/* round the bottom-left  corners */
+table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+/* round the bottom-right corners */
+table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+/* apply flex layout container of buttons and search box */
+div.dt-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* right-align the search box */
+div.dt-search {
+  text-align: right;
+  display: inline-block;
+  margin-left: auto;
+}
+
+/* style the button group to ensure they stay aligned properly */
+div.dt-buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.modal .dataTable {
+  margin: 0 0 1em 0;
+}
+
+.pagination {
+  --bs-pagination-padding-x: 1rem;
+  --bs-pagination-padding-y: 0.25rem;
+  --bs-pagination-font-size: 1rem;
+
+  --bs-pagination-color: #000000;
+  --bs-pagination-bg: #f4f4f4;
+  --bs-pagination-border-color: #dddddd;
+  --bs-pagination-border-width: 1px;
+  --bs-pagination-border-radius: 0.5rem;
+
+  --bs-pagination-hover-color: #000000;
+  --bs-pagination-hover-bg: #e0e0e0;
+  --bs-pagination-hover-border-color: #dddddd;
+
+  --bs-pagination-focus-color: #000000;
+  --bs-pagination-focus-bg: #e0e0e0;
+  --bs-pagination-focus-box-shadow: 0 0.125rem 0.25rem 0 rgba(180, 180, 180, 0.4);
+
+  --bs-pagination-active-color: #000000;
+  --bs-pagination-active-bg: #e0e0e0;
+  /* Updated background for current page */
+  --bs-pagination-active-border-color: #dddddd;
+
+  --bs-pagination-disabled-color: #999999;
+  --bs-pagination-disabled-bg: #ffffff;
+  --bs-pagination-disabled-border-color: #dddddd;
+
+  list-style: none;
+}
+
+.page-link {
+  color: var(--bs-pagination-color);
+  background-color: var(--bs-pagination-bg);
+  border: 1px solid var(--bs-pagination-border-color);
+}
+
+.page-link:hover {
+  color: var(--bs-pagination-hover-color);
+  background-color: var(--bs-pagination-hover-bg);
+  border-color: var(--bs-pagination-hover-border-color);
+}
+
+.page-link:focus {
+  color: var(--bs-pagination-focus-color);
+  background-color: var(--bs-pagination-focus-bg);
+  border-color: var(--bs-pagination-border-color);
+  box-shadow: var(--bs-pagination-focus-box-shadow);
+}
+
+.page-link.active {
+  color: var(--bs-pagination-active-color);
+  background-color: var(--bs-pagination-active-bg);
+  /* #e0e0e0 */
+  border-color: var(--bs-pagination-active-border-color);
+  /* #dddddd */
+  box-shadow: var(--bs-pagination-active-shadow, none);
+}
+
+.page-link.disabled {
+  color: var(--bs-pagination-disabled-color);
+  background-color: var(--bs-pagination-disabled-bg);
+  border-color: var(--bs-pagination-disabled-border-color);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* datatables buttons */
+.dt-buttons .btn {
+  padding: 0.3rem 1rem !important;
+}
+
+/* search bar input */
+.dataTables_filter input {}
+
+.card .table tbody tr td {
+  border: none !important;
+}
+
+/* make empty data tables taller to match 10 row tables when in row */
+.row .dt-empty {
+  height: 370px !important;
+}

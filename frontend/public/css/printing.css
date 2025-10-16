@@ -1,0 +1,205 @@
+/* hide elements with .no-print when printing */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  /* set page background to match card */
+  body,
+  html {
+    background: #fff !important;
+  }
+}
+
+.only-print {
+  display: none;
+}
+
+@media print {
+  .only-print {
+    display: block !important;
+  }
+}
+
+@media print {
+
+  .col-lg-4 {
+    /* set a custom width for 3 columns when printing */
+    width: 30.5% !important;
+  }
+
+  .col-sm,
+  .col-md-6,
+  .col-lg {
+    /* set a custom width for 2 columns when printing */
+    width: 40% !important;
+  }
+
+  .col-lg-12 {
+    /* set a custom width for all 1 columns when printing */
+    width: 91.5% !important;
+  }
+
+  /* this rule adds padding (margins) around the entire page */
+  body {
+    padding: 10mm;
+  }
+
+  /* this rule reduces the font size for all headings */
+  h5,
+  h4 {
+    font-size: 16px;
+  }
+
+  /* this rule reduces the font size for all tables */
+  table {
+    font-size: 12px;
+  }
+
+  .row .dt-empty {
+    height: 280px !important;
+  }
+
+  .datatables_wrapper {
+    width: 100% !important;
+  }
+
+  .chartcard>div[id^="apexcharts"] {
+    width: 100% !important;
+  }
+
+  .ChartCard {
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    margin-bottom: 20px !important;
+    /* NEW: Vertical space between charts */
+  }
+
+  .apexcharts-canvas,
+  .apexcharts-inner,
+  .apexcharts {
+    /* Added .apexcharts for better compatibility */
+    width: 100% !important;
+  }
+
+  .ChartCard>div[id^="apexcharts"] {
+    width: 100% !important;
+  }
+}
+
+@media print {
+
+  /* 1. CHART LAYOUT: Ensures stacking and separation */
+  /* Targets the parent container to enforce the column view on print */
+  .print-container {
+    display: block !important;
+    /* Overrides d-flex, ensuring charts stack */
+    width: 100% !important;
+    /* Remove web gap if needed, though d-print-block usually handles it */
+    gap: 0 !important;
+  }
+
+  /* 2. CHART ITEM FIXES: Full width, no border, and vertical spacing */
+  /* High specificity to override col-lg-6 and other conflicting styles */
+  .print-container .chart-item {
+    /* Full Width */
+    width: 100% !important;
+
+    /* Stack Separation */
+    margin: 15px 0 !important;
+    /* Adds 15px margin above and below each chart */
+
+    /* Border/Shadow Removal */
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+
+    padding-top: 150px !important;
+
+  }
+
+  /* 3. APEXCHARTS EXPANSION: Makes the actual chart canvas use the full width */
+  .print-container .chart-item .apexcharts-canvas,
+  .print-container .chart-item .apexcharts-inner,
+  .print-container .chart-item .apexcharts {
+    width: 100% !important;
+  }
+
+  /* 4. Target the ChartCard element for better compatibility if you need it */
+  .print-container .chart-item.ChartCard {
+    /* You can add extra styles here if .chart-item isn't enough */
+  }
+
+  /* You can remove the old generic .ChartCard and .print-full-width rules if these new rules work, 
+       but for now, keeping them won't hurt. */
+}
+
+
+@media print {
+  .print-block {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    display: block !important;
+  }
+}
+
+@media print {
+  .print-page-break {
+    /* new: turn the inline span into a block element */
+    display: block !important;
+
+    break-before: page !important;
+    /* modern browsers */
+    page-break-before: always !important;
+    /* legacy support */
+  }
+}
+
+/* 1. page break class */
+/* this class ensures the element that follows it starts on a new page */
+.print-page-break-before {
+  page-break-before: always !important;
+  /* standard css print property */
+  break-before: page !important;
+  /* modern alternative for page break */
+}
+
+/* 2. full width class */
+/* this class ensures the element always takes 100% width on print */
+@media print {
+  .print-full-width {
+    width: 100% !important;
+    /* ensure no horizontal margins or padding are shrinking the content */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .print-container .chart-item .apexcharts-canvas,
+  .print-container .chart-item .apexcharts {
+    width: 100% !important;
+  }
+
+  .apexcharts-canvas {
+    /* Increase height for print view */
+    /* Ensure chart takes full available width of its parent card */
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: scale(1.5);
+  }
+
+  .apexcharts-toolbar {
+    display: none !important;
+  }
+
+  .apexcharts-title-text {
+    /* To ensure centering works across various browser/chart rendering modes, 
+         you might need to target the parent or set its display properties. */
+    width: 100% !important;
+    text-align: center !important;
+    /* Often, the title text is inside a div. We also center the SVG element itself. */
+    margin: 0 auto !important;
+  }
+}

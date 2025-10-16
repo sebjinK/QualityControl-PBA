@@ -1,0 +1,86 @@
+/* Match react-select to .form-control and .form-floating styles */
+.react-select__control {
+    padding: 0.5rem;
+    border: 1px solid #dddddd !important;
+    background-color: #fcfcfc !important;
+    color: #000000 !important;
+    border-radius: .25rem !important;
+    min-height: calc(3rem + 2px);
+    max-height: 50px !important;
+    box-shadow: none !important;
+    margin: 4px 0 0 !important;
+}
+
+.react-select__control--is-focused {
+    border-color: #bfbfbf !important;
+    box-shadow: none !important;
+}
+
+.react-select__value-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.react-select__input {
+    color: #000000 !important;
+}
+
+.react-select__placeholder {
+    color: #6f757c !important;
+}
+
+.react-select__single-value {
+    color: #000000 !important;
+}
+
+.react-select__menu {
+    background-color: #F4F4F4 !important;
+    border: 1px solid #DDDDDD !important;
+    border-radius: .25rem !important;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    z-index: 9999 !important;
+    /* Increased z-index for priority */
+}
+
+.react-select__option {
+    color: #000000 !important;
+    background-color: transparent !important;
+    padding: 0.5rem 1rem;
+}
+
+.react-select__option--is-focused {
+    background-color: #e0e0e0 !important;
+    color: #000000 !important;
+}
+
+.react-select__option--is-selected {
+    background-color: #cccccc !important;
+    color: #000000 !important;
+}
+
+.react-select__indicator-separator {
+    background-color: #dddddd !important;
+}
+
+.react-select__dropdown-indicator {
+    color: #6f757c !important;
+}
+
+.react-select__clear-indicator {
+    color: #6f757c !important;
+}
+
+.react-select__multi-value {
+    background-color: #e0e0e0 !important;
+    color: #000000 !important;
+    border-radius: .25rem !important;
+}
+
+.react-select__multi-value__label {
+    color: #000000 !important;
+}
+
+.react-select__multi-value__remove {
+    color: #6f757c !important;
+    background-color: transparent !important;
+}

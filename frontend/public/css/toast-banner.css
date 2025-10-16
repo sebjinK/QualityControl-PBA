@@ -1,0 +1,127 @@
+/* Smooth fade-out for notification banners */
+.fade-out {
+    opacity: 0 !important;
+    transition: opacity 0.8s ease;
+}
+
+/* Notification Banner (Toast) - Clean, Consistent, and Modern */
+
+.toast-banner-container {
+    z-index: 9999;
+    position: fixed;
+    top: 3.5rem;
+    right: 3.5rem;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+.toast-banner {
+    pointer-events: auto;
+}
+
+/* Main Toast Banner */
+.toast-banner {
+    border: none;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.13);
+    min-width: 253px;
+    max-width: 353px;
+    border-radius: 1.17rem;
+    overflow: hidden;
+    background: transparent;
+}
+
+/* Header - fills the top, rounded corners */
+.toast-banner .toast-header {
+    display: flex;
+    align-items: center;
+    gap: 0.67rem;
+    font-weight: 600;
+    font-size: 1.13rem;
+    padding: 0.67rem 1.17rem;
+    border-top-left-radius: 0.67rem;
+    border-top-right-radius: 0.67rem;
+    background: #e9ecef;
+    color: #333;
+}
+
+/* Body - fills the bottom, rounded corners */
+.toast-banner .toast-body {
+    font-size: 1.03rem;
+    color: #222;
+    padding: 0.67rem 1.17rem;
+    background: #fff;
+    border-bottom-left-radius: 1.17rem;
+    border-bottom-right-radius: 1.17rem;
+}
+
+/* Notification Icon */
+.toast-banner-icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 0.42rem;
+    margin-right: 0.42rem;
+}
+
+/* Success Variant */
+.toast-banner-success .toast-header {
+    background: #28a745;
+    color: #fff;
+}
+
+.toast-banner-success .toast-body {
+    background: #fff;
+    color: #222;
+}
+
+/* Error Variant */
+.toast-banner-error .toast-header {
+    background: #dc3545;
+    color: #fff;
+}
+
+.toast-banner-error .toast-body {
+    background: #fff;
+    color: #222;
+}
+
+/* Info Variant */
+.toast-banner-info .toast-header {
+    background: #0dcaf0;
+    color: #fff;
+}
+
+.toast-banner-info .toast-body {
+    background: #fff;
+    color: #222;
+}
+
+/* Extreme Error Variant */
+.toast-banner-extreme-error .toast-header {
+    background: #b30000;
+    color: #fff;
+}
+
+.toast-banner-extreme-error .toast-body {
+    background: #fff5f5;
+    color: #b30000;
+}
+
+/* Alert Variant */
+.toast-banner-alert .toast-header {
+    background: #ff9800;
+    color: #fff;
+}
+
+.toast-banner-alert .toast-body {
+    background: #fff8e1;
+    color: #ff9800;
+}
+
+/* Optional: Add a slight hover effect for interactivity */
+.toast-banner:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}

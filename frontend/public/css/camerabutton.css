@@ -1,0 +1,7 @@
+.camera-btn:hover,
+.camera-btn:focus {
+    background: #e9f5ff !important;
+    border-color: #339af0 !important;
+    box-shadow: 0 4px 16px rgba(51, 154, 240, 0.15) !important;
+    cursor: pointer;
+}

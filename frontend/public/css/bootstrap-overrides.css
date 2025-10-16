@@ -1,0 +1,332 @@
+/* Custom white tooltip with orange exclamation box, normal border and shadow */
+.tooltip.bs-tooltip-top .tooltip-inner,
+.tooltip.bs-tooltip-bottom .tooltip-inner,
+.tooltip.bs-tooltip-left .tooltip-inner,
+.tooltip.bs-tooltip-right .tooltip-inner {
+  background: #fff;
+  color: #333;
+  border: 1px solid #5b5b5b;
+  /* normal dark border */
+  box-shadow: 0 4px 16px rgba(60, 60, 60, 0.18);
+  /* subtle gray shadow */
+  padding: 0.75em 1.2em;
+  font-weight: 500;
+  font-size: 1em;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Orange box with white exclamation */
+.tooltip.bs-tooltip-top .tooltip-inner::before,
+.tooltip.bs-tooltip-bottom .tooltip-inner::before,
+.tooltip.bs-tooltip-left .tooltip-inner::before,
+.tooltip.bs-tooltip-right .tooltip-inner::before {
+  content: "!";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffa500;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1em;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 0.3em;
+  margin-right: 0.6em;
+  box-shadow: 0 1px 4px rgba(255, 165, 0, 0.15);
+}
+
+/* Tooltip arrow orange */
+.tooltip.bs-tooltip-top .arrow::before,
+.tooltip.bs-tooltip-bottom .arrow::before,
+.tooltip.bs-tooltip-left .arrow::before,
+.tooltip.bs-tooltip-right .arrow::before {
+  background: #ffa500 !important;
+  border-color: #ffa500 !important;
+}
+
+/* Ensure tooltip is fully opaque */
+.tooltip.show {
+  opacity: 1 !important;
+}
+
+.tooltip .tooltip-inner {
+  opacity: 1 !important;
+  background: #fff !important;
+}
+
+.bg-light {
+  background-color: #F4F4F4 !important;
+}
+
+.card {
+  border: 1px solid #DDDDDD !important;
+  border-radius: .25rem !important;
+}
+
+.btn-secondary {
+  --bs-btn-color: #000000;
+  /* dark text on light button */
+  --bs-btn-bg: #F4F4F4;
+  /* resting bg */
+  --bs-btn-border-color: #DDDDDD;
+  /* match bg to keep border subtle */
+
+  --bs-btn-hover-color: #000000;
+  /* still readable */
+  --bs-btn-hover-bg: #e0e0e0;
+  /* slightly darker hover */
+  --bs-btn-hover-border-color: #d6d6d6;
+  /* darker border for hover */
+
+  --bs-btn-focus-shadow-rgb: 180, 180, 180;
+  /* gentle focus shadow */
+
+  --bs-btn-active-color: #000000;
+  --bs-btn-active-bg: #cccccc;
+  /* darker for active */
+  --bs-btn-active-border-color: #bfbfbf;
+  --bs-btn-active-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+
+  --bs-btn-disabled-color: #999999;
+  /* grayed-out text */
+  --bs-btn-disabled-bg: #f4f4f4;
+  --bs-btn-disabled-border-color: #f4f4f4;
+}
+
+button.btn.btn-secondary.buttons-collection.dropdown-toggle::after {
+  position: relative;
+  top: 2px;
+  right: -2px;
+}
+
+/* style the dropdown menu container */
+div[role="menu"] {
+  background-color: #F4F4F4;
+  border: 1px solid #DDDDDD;
+  border-radius: .25rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  min-width: 12rem;
+}
+
+.dropdown-menu {
+  transition: none !important;
+  transform: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+  display: block !important;
+}
+
+/* style individual dropdown links */
+div[role="menu"] .dropdown-item {
+  color: #000000;
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+}
+
+/* hover and focus state */
+div[role="menu"] .dropdown-item:hover,
+div[role="menu"] .dropdown-item:focus {
+  background-color: #e0e0e0;
+  color: #000000;
+}
+
+/* active state */
+div[role="menu"] .dropdown-item:active {
+  background-color: #cccccc;
+  color: #000000;
+  border-color: #bfbfbf;
+  box-shadow: none;
+}
+
+/* optional: remove underline on focus */
+div[role="menu"] .dropdown-item:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+.form-control {
+  padding: 0.5rem;
+  border: 1px solid #dddddd !important;
+  background-color: #fcfcfc !important;
+}
+
+input.form-control,
+input.form-control:focus {
+  color: #000000;
+  /* makes user text black */
+}
+
+/* match Bootstrap hover/focus style */
+.btnReleaseItems:hover,
+.btnReleaseItems:focus {
+  background-color: #9c291b pimportant;
+  /* slightly darker than base color */
+  color: white !important;
+  text-decoration: none;
+  outline: none;
+}
+
+/* style the "Release Items" button */
+.btnReleaseItems {
+  background-color: #c03221 !important;
+  /* base color */
+  color: white !important;
+  border: none !important;
+  border-radius: 999px !important;
+  /* full pill shape */
+  transition: background-color 0.2s ease-in-out;
+  padding: 0.25rem 1.5rem;
+}
+
+/* match Bootstrap hover/focus style */
+.btnReceiveItems:hover,
+.btnReceiveItems:focus {
+  background-color: #258c68 !important;
+  /* slightly darker than base color */
+  color: white !important;
+  text-decoration: none;
+  outline: none;
+}
+
+/* match Bootstrap hover/focus style */
+.btnCreateItems:hover,
+.btnCreateItems:focus {
+  background-color: #3b47bd !important;
+  /* slightly darker than base color */
+  color: white !important;
+  text-decoration: none;
+  outline: none;
+}
+
+/* style the "Release Items" button */
+.btnCreateItems {
+  background-color: #4d59df !important;
+  /* base color */
+  color: white !important;
+  border: none !important;
+  border-radius: 999px !important;
+  /* full pill shape */
+  transition: background-color 0.2s ease-in-out;
+  padding: 0.25rem 1.5rem;
+}
+
+/* style the "Start Scan" dropdown button */
+.btnReceiveItems {
+  background-color: #2eaf82 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50% !important;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 999px !important;
+  padding: 0.25rem 1.5rem;
+}
+
+/* round all datatables.net buttons */
+button.dt-button,
+div.dt-button,
+a.dt-button,
+.btn.buttons-collection,
+.btn-group>:not(.btn-check)+.btn,
+.btn-group>.btn:not(:last-child):not(.dropdown-toggle),
+.btn-group>.btn.dropdown-toggle-split:first-child,
+.btn-group>.btn-group:not(:first-child)>.btn,
+.btn-group>.btn-group:not(:last-child)>.btn {
+  border-radius: .25rem;
+}
+
+.modal-header {
+  /* border-bottom: var(--bs-modal-header-border-width) solid #dddddd !important; */
+  border-bottom: none;
+}
+
+.modal-body {
+  padding: 0 1rem 1rem 1rem;
+}
+
+input[type="date"]:empty::before {
+  color: #6f757c;
+}
+
+input[type="date"]:invalid {
+  color: #6f757c;
+}
+
+/* style select boxes like input fields */
+select.form-select {
+  padding: 0.5rem;
+  border: 1px solid #dddddd !important;
+  background-color: #fcfcfc !important;
+  color: #000000 !important;
+  /* black text */
+  appearance: none;
+  /* custom arrow */
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.65rem auto;
+}
+
+/* focus state */
+select.form-select:focus {
+  border-color: #bfbfbf !important;
+  /* slightly darker border on focus */
+  box-shadow: none !important;
+  /* remove focus glow */
+}
+
+/* disabled state */
+select.form-select:disabled {
+  background-color: #f4f4f4 !important;
+  color: #999999 !important;
+}
+
+/* style the placeholder option (when selected) */
+select.form-select:invalid {
+  color: #6f757c !important;
+  /* muted gray */
+}
+
+/* style all other selected options */
+select.form-select option {
+  color: #000000;
+  /* black text for options */
+}
+
+/* style form labels including those of the form-floating class */
+.form-label {
+  color: #6f757c !important;
+}
+
+.form-floating>.form-control,
+.form-floating>.form-control-plaintext,
+.form-floating>.form-select {
+  height: calc(3rem + 2px);
+  min-height: calc(3rem + 2px);
+}
+
+.input-group>.form-control,
+.input-group>.form-select,
+.input-group>.form-floating {
+  height: calc(3rem + 2px);
+}
+
+.form-select {
+  border-top-right-radius: .25rem !important;
+  border-bottom-right-radius: .25rem !important;
+}
+
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  margin-top: 0.25em;
+}
+
+/* change starting padding of form-floating labels */
+/* .form-floating>.form-control,
+.form-floating>.form-control-plaintext {
+  padding-left: 0.7rem !important;
+} */
+
+.sidebar {
+  border-right: 1px solid #DDDDDD !important
+}

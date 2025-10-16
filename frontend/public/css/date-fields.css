@@ -1,0 +1,114 @@
+.date-range-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  /* Adjust spacing between elements */
+  font-family: sans-serif;
+  color: #333;
+}
+
+.date-range-label {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.date-range-input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.date-range-input:hover {
+  border-color: #999;
+}
+
+.date-range-input:focus {
+  border-color: #007bff;
+  /* Highlight on focus */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Summary and Metrics Container */
+.summary-metrics-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Individual Summary Cards */
+.summary-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+}
+
+/* Card Titles */
+.summary-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* List Styling */
+.summary-list {
+  list-style-type: none;
+  /* Removes default bullets */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* Tight, decent spacing between items */
+}
+
+/* List Items with Custom Bullets */
+.summary-list li {
+  padding-left: 1.5em;
+  /* Space for the bullet point */
+  position: relative;
+  font-size: 1rem;
+  color: #555;
+}
+
+.summary-list li::before {
+  content: "•";
+  /* Custom bullet point */
+  color: #007bff;
+  /* Color of the bullet */
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+/* For better responsiveness on smaller screens */
+@media (max-width: 768px) {
+  .summary-metrics-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Chart Cards (if you want to apply the same card styling) */
+.chart-card {
+  flex: 1;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  height: 350px;
+}

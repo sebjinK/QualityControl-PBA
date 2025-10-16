@@ -1,0 +1,10 @@
+.profile-flex-container {
+  flex-direction: row;
+}
+
+@media (max-width: 1200px) {
+  .profile-flex-container {
+    flex-direction: column !important;
+    align-items: stretch;
+  }
+}

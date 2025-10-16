@@ -1,0 +1,69 @@
+.triple-selector .container {
+  margin: 30px auto 0;
+  color: white;
+  padding: 90px 0;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.triple-selector .switch {
+  position: relative;
+  height: 32px;
+  width: 300px;
+  background: #F2F2F2;
+  background: #D7D7D7;
+  border-radius: 32px;
+}
+
+.triple-selector .switch-label {
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 100px;
+  line-height: 32px;
+  font-size: 12px;
+  color: #676a6c;
+  text-align: center;
+  cursor: pointer;
+}
+
+.triple-selector .switch-input {
+  display: none;
+}
+
+.triple-selector .switch-input:checked+.switch-label {
+  color: #FFF;
+  transition: none;
+  transition-property: color, text-shadow;
+}
+
+.triple-selector .switch-input:checked+.switch-label-y~.switch-selector {
+  transform: translateX(0%);
+
+}
+
+.triple-selector .switch-input:checked+.switch-label-i~.switch-selector {
+  transform: translateX(100%);
+
+}
+
+.triple-selector .switch-input:checked+.switch-label-n~.switch-selector {
+  transform: translateX(200%);
+
+}
+
+
+.triple-selector .switch-selector {
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  display: block;
+  width: 100px;
+  height: 32px;
+  border-radius: 32px;
+  background-color: #4D59DF;
+  transition: none;
+  transition: transform 0.25s ease-in-out;
+}

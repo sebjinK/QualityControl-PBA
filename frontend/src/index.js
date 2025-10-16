@@ -1,11 +1,26 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+// router imports
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Landing from './pages/Landing';
+import NoPage from './pages/NoPage';
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+import reportWebVitals from './reportWebVitals';
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="*" element={<NoPage />} /> {/* 404 page */}
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>

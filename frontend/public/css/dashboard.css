@@ -1,0 +1,114 @@
+.dashboard-layout {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sidebar {
+    transition:
+        transform 0.5s cubic-bezier(0.77, 0, 0.175, 1),
+        opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1),
+        min-width 0.4s cubic-bezier(0.77, 0, 0.175, 1),
+        width 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    opacity: 1;
+    transform: translateX(0);
+    min-width: 270px;
+    width: 310px;
+    height: 100vh;
+    will-change: transform, opacity, min-width, width;
+}
+
+.sidebar.collapsed {
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+    min-width: 0 !important;
+    width: 0 !important;
+}
+
+.main-content {
+    flex-grow: 1;
+    width: 100%;
+    height: 100vh;
+    transition: width 0.3s ease;
+}
+
+/* Hide sidebar toggle by default using Bootstrap's invisible class */
+.sidebar-toggle-btn {
+    visibility: hidden;
+}
+
+/* Sidebar toggle buttons default styles */
+.inside-sidebar-toggle-btn {
+    display: none;
+}
+
+.outside-sidebar-toggle-btn {
+    visibility: hidden;
+}
+
+/* Show both toggle buttons on small screens */
+@media (max-width: 1200px) {
+    .sidebar-toggle-btn {
+        visibility: visible;
+    }
+
+    .inside-sidebar-toggle-btn,
+    .outside-sidebar-toggle-btn {
+        display: inline-block;
+        visibility: visible;
+    }
+
+    .sidebar {
+        width: 100vw;
+        min-width: 100vw;
+        height: 100vh;
+    }
+
+    .sidebar-body {
+        overflow-y: auto;
+        max-height: calc(100vh - 70px) !important;
+    }
+}
+
+/* On screens larger than 1200px, reset sidebar width even if collapsed */
+@media (min-width: 1200px) {
+    .sidebar {
+        min-width: 270px;
+        width: 310px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+    }
+
+    .sidebar.collapsed {
+        opacity: 0;
+        transform: translateX(-100%);
+        pointer-events: none;
+        min-width: 0;
+        width: 0;
+    }
+
+    .sidebar-body {
+        overflow-y: auto;
+        max-height: calc(100vh - 70px) !important;
+        scrollbar-width: thin;
+        /* Firefox */
+    }
+
+    .sidebar-body::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .sidebar-body::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 4px;
+    }
+}
+
+
+.sidebar-body {
+    overflow-y: auto;
+    max-height: calc(100vh - 70px) !important;
+    /* Adjust for header height */
+}
