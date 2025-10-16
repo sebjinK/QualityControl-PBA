@@ -1,14 +1,9 @@
 import React from 'react';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 
-// This App component is now minimal, clean, and ready for you to build your content quickly.
 function App() {
   return (
     <div className="App bg-light h-screen">
-      {/* This Navbar is a standard React-Bootstrap component.
-        It should inherit the existing Hope UI styles if the CSS 
-        is still correctly layered over Bootstrap's defaults.
-      */}
       <Navbar bg="dark" variant="dark" expand="lg" className="shadow-md">
         <Container>
           <Navbar.Brand href="#home">
