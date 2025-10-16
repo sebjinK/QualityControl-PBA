@@ -3,37 +3,15 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-//router
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-//store
-import { Provider } from "react-redux";
-//reducer
-import { store } from "./store";
-
-import Index from "./views/index";
-import { IndexRouters } from "./router";
-import { SimpleRouter } from "./router/simple-router";
-import { DefaultRouter } from "./router/default-router";
-
+// 1. Keep Bootstrap CSS import
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Index />,
-  },
-  ...DefaultRouter,
-  ...IndexRouters,
-  ...SimpleRouter
-], { basename: process.env.PUBLIC_URL });
+// 2. Removed: react-router-dom imports, redux imports, store logic
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App>
-        <RouterProvider router={router}></RouterProvider>
-      </App>
-    </Provider>
+    {/* 3. Removed: Provider (Redux) and RouterProvider (Routing) */}
+    <App />
   </React.StrictMode>
 );
 
