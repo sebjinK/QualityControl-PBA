@@ -1,0 +1,73 @@
+body {
+  font-family: Inter, Roboto, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+  background: #f6f9fc;
+  margin: 0;
+  padding: 40px;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(30, 41, 59, 0.08);
+}
+
+.preview-container {
+  position: relative;
+  display: inline-block;
+  margin: 16px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.preview-img {
+  max-width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.label {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.result {
+  margin-top: 16px;
+}
