@@ -58,6 +58,8 @@ const Landing = () => {
               </div>
             </div>
             <h4 className="logo-title ps-2">Quality Control</h4>
+            <span className="caliber-link ps-3 color text-muted">Caliber</span>
+            <span className="labels-link ps-3 color text-muted">Label Verification</span>
           </a>
 
           <div className="d-flex justify-content-around align-items-center">
