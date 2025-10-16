@@ -1,108 +1,81 @@
-import React from 'react';
-// Assuming 'Link' is imported from 'react-router-dom' based on its usage
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+// Removed: import "./App.css"; as CSS is typically imported in the root component or main index file,
+// or you'll need to create a Caliber.css file if the styling isn't global.
 
-const Mission = () => {
+function Caliber() { // Renamed from App to Caliber
+  const [file, setFile] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  function handleFileChange(e) {
+    const f = e.target.files[0];
+    if (!f) return;
+    setFile(f);
+    const url = URL.createObjectURL(f);
+    setPreview(url);
+    setResult(null);
+  }
+
+  async function handleUpload(e) {
+    e.preventDefault();
+    if (!file) return;
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      // NOTE: Using hardcoded endpoint. Consider using process.env.REACT_APP_BACKURL like in Landing.js
+      const resp = await fetch("http://localhost:8000/predict", {
+        method: "POST",
+        body: formData,
+      });
+      if (!resp.ok) throw new Error(await resp.text());
+      const json = await resp.json();
+      setResult(json);
+    } catch (err) {
+      alert("Upload failed: " + err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="container">
-      {/* Our Vision / Mission Section (Centered) */}
-      <div id="vision" className="col-12 row mb-5 justify-content-center">
-        <div className="col-12 col-md-6 ">
-          <h2 className="text-center col-12 mt-5">Caliber</h2>
-          <hr />
-          <p className="text-gray-600 leading-relaxed">
-            We're building two powerful AI quality control tools to completely eliminate human error in tile manufacturing, bringing in automated efficiency and standardized consistency.
+      <h1>Square Size Predictor</h1>
+
+      <form onSubmit={handleUpload} className="card">
+        <input type="file" accept="image/*" onChange={handleFileChange} />
+        {preview && (
+          <div className="preview-container">
+            <img src={preview} alt="preview" className="preview-img" />
+            {result && (
+              <div className="overlay">
+                <span className="label">
+                  {result.predicted_side_cm.toFixed(2)} cm
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+        <button type="submit" disabled={!file || loading}>
+          {loading ? "Predicting..." : "Upload & Predict"}
+        </button>
+      </form>
+
+      {result && (
+        <div className="result card">
+          <h2>Prediction Result</h2>
+          <p>
+            <strong>Predicted Side:</strong> {result.predicted_side_cm.toFixed(2)} cm
           </p>
-
-          {/* Calibre Assessment */}
-          <h5 className="font-semibold text-gray-800 mb-2">Calibre Assessment</h5>
-          <ul className="list-disc ml-5 text-gray-600 space-y-3">
-            <li>
-              <ul className="list-circle ml-5">
-                <li>We're training a Convolutional Neural Network (CNN) to visually inspect every finished tile.</li>
-                <li>The system determines the tile's exact calibre (categorized 3, 4, or 5).</li>
-              </ul>
-            </li>
-          </ul>
-
-          {/* Automated Labeling */}
-          <h5 className="font-semibold text-gray-800 mb-2">Automated Labeling</h5>
-          <ul className="list-disc ml-5 text-gray-600 space-y-3">
-            <li>
-              <ul className="list-circle ml-5">
-                <li>We use computer vision to quickly read the existing product ID printed on the box.</li>
-                <li>A new, correct label is automatically printed with all the shipment details.</li>
-              </ul>
-            </li>
-          </ul>
-
+          <p>
+            <strong>Confidence:</strong> {result.confidence}
+          </p>
         </div>
-      </div>
-
-      {/* More info cards (Areas Served, Partners, Features) */}
-      <div className="col-12 row mt-4 mb-5 justify-content-around">
-
-        {/* Areas Served Card */}
-        <div className="col-12 col-md-3 card">
-          <div className="card-body">
-            <h2 className="text-center col-12 mt-2">Areas Served</h2>
-            <hr />
-            <p className="col-12 mt-4"><i className="bi bi-heart-fill me-2 text-info"></i>Algood</p>
-            <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Baxter</p>
-            <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Cookeville</p>
-            <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Crossville</p>
-            <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Cumberland County</p>
-            <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Monterey</p>
-            <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Putnam County</p>
-          </div>
-        </div>
-
-        {/* Partners Card */}
-        <div className="col-12 col-md-3 card">
-          <div className="card-body d-flex flex-column">
-            <div className="flex-grow-1">
-              <h2 className="text-center col-12 mt-2">Partners</h2>
-              <hr />
-              <p className="col-12 mt-4"><i className="bi bi-heart-fill me-2 text-info"></i>DUO Mobile Missions</p>
-              <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Life Church</p>
-              <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Putnam County</p>
-              <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Steven's Street Baptist Church</p>
-              <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Upper Cumberland Family Justice Center</p>
-            </div>
-            {/* The link target needs to be a valid path/function */}
-            <Link to="/404" className="btn btn-secondary col-12">Contact Us to Add Your Organization!</Link>
-          </div>
-        </div>
-
-        {/* Features Card */}
-        <div className="col-12 col-md-3 card">
-          <div className="card-body d-flex flex-column">
-            <div className="flex-grow-1">
-              <h2 className="text-center col-12 mt-2">Features</h2>
-              <hr />
-              <p className="col-12 mt-4 mb-0"><i className="bi bi-heart-fill me-2 text-info"></i>Register Clients</p>
-              <p className="col-12 mt-0 ms-4"><small className="fw-lighter fst-italic">Add new clients to Bridging Hope</small></p>
-              <p className="col-12 mt-2 mb-0"><i className="bi bi-heart-fill me-2 text-info"></i>Log Visits</p>
-              <p className="col-12 mt-0 ms-4"><small className="fw-lighter fst-italic">Track the aid you give digitally</small></p>
-              <p className="col-12 mt-2 mb-0"><i className="bi bi-heart-fill me-2 text-info"></i>Search Clients</p>
-              <p className="col-12 mt-0 ms-4"><small className="fw-lighter fst-italic">Find existing client accounts with ease</small></p>
-            </div>
-            <Link to="/faq" className="btn btn-secondary col-12">Frequently Asked Questions</Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Register Now button */}
-      <div className="col-12 row mt-4 mb-5 justify-content-around">
-        <Link to="/register" className="btn btn-secondary btn-lg col-8">Register Now</Link>
-      </div>
-
-      {/* Developed and maintained with love */}
-      <div className="col-12 row mb-5 justify-content-center">
-        <p className="text-center">Developed and maintained with<i className="bi bi-heart-fill ms-2 me-2 text-info"></i>by Business Information Technology and Computer Science students at Tennessee Technological University</p>
-      </div>
+      )}
     </div>
   );
-};
+}
 
-export default Mission;
+export default Caliber;
