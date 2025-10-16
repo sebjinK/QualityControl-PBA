@@ -23,7 +23,7 @@ function App() {
             </Nav>
             <Nav>
               <Button variant="outline-light" className="hover:bg-yellow-500 hover:text-black transition-all duration-200">
-                Submit Idea
+                Example Button
               </Button>
             </Nav>
           </Navbar.Collapse>
