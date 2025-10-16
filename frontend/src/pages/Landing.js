@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import Mission from './Mission';
+import Caliber from './Caliber';
 
 { /*
   Filename:    Landing.js
@@ -13,6 +14,7 @@ const Landing = () => {
   let newDate = new Date();
   let year = newDate.getFullYear();
   const [signInNavigator, setSignInNavigator] = React.useState("/signin");
+  const [activeSection, setActiveSection] = useState('mission'); // Default to Mission
 
   useEffect(() => {
     async function checkSession() {
@@ -65,13 +67,23 @@ const Landing = () => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link className="nav-link active ms-4" aria-current="page" to="/mission">Mission</Link>
+                  <a
+                    className={`nav-link ms-4 ${activeSection === 'mission' ? 'active' : ''}`}
+                    aria-current="page"
+                    href="#"
+                    onClick={() => setActiveSection('mission')}
+                  >
+                    Mission
+                  </a>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link ms-4" to="/calibre-check">Calibre Check</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/label-process">Label Processing</Link>
+                  <a
+                    className={`nav-link ms-4 ${activeSection === 'caliber' ? 'active' : ''}`}
+                    href="#"
+                    onClick={() => setActiveSection('caliber')}
+                  >
+                    Caliber Check
+                  </a>
                 </li>
               </ul>
             </div>
@@ -119,7 +131,10 @@ const Landing = () => {
           </div>
         </div>
 
-        <Mission />
+        <div id="content-section">
+          {activeSection === 'mission' && <Mission />}
+          {activeSection === 'caliber' && <Caliber />}
+        </div>
 
         {/* footer */}
         <footer className="footer">
