@@ -3,14 +3,10 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-// 1. Keep Bootstrap CSS import
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-// 2. Removed: react-router-dom imports, redux imports, store logic
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    {/* 3. Removed: Provider (Redux) and RouterProvider (Routing) */}
     <App />
   </React.StrictMode>
 );
