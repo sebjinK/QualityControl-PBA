@@ -1,21 +1,23 @@
 # QualityControl-PBA
 
-<center>
-Trail, Braylon (batrail42) Boyd, Jamie (jjboyd43) Harberts, Preston (pjharberts42) Kennedy, Sebjin (sjkennedy43) Gripp, Guilherme (gpgripp42)
-</center>
+<h4 align="center">
+Braylon Trail, Jamie Boyd, Preston Harberts, Sebjin Kennedy, Guilherme Gripp
+</h4>
+
 
 This Hackathon project contains two powerful AI quality control tools to completely eliminate human error in tile manufacturing, bringing in automated efficiency and standardized consistency.
 
-Calibre Analysis (AI Tool 1)
+**Calibre Analysis (AI Tool 1)**
 - We have trained a Convolutional Neural Network (CNN) to visually inspect every finished tile.
 - The system determines the tile's exact calibre (categorized 3, 4, or 5).
-Label Automation (AI Tool 2)
+
+**Label Automation (AI Tool 2)**
 - We use computer vision to quickly read the existing product ID printed on the box.
 - A new, correct label is automatically printed with all the shipment details.
 
 Here are the tools we use:
 - Frontend: React, HTML, CSS, JS, Hope UI, Bootstrap 
-- Backend: JS, Python
+- Backend: JS, Python, CNNs, RNNs, OCR
 
 ### Backend
 
