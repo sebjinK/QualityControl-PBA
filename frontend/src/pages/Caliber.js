@@ -50,7 +50,7 @@ function Caliber() { // Renamed from App to Caliber
         {/* 1. Styled Label/Button */}
         <label htmlFor="file-upload" className="btn btn-outline-secondary w-100 mb-4 rounded-3 shadow-sm cursor-pointer">
           {/* Display file name or default text */}
-          {file ? `File Selected: ${file.name}` : 'Choose Tile Image for Calibre Check'}
+          {file ? `File Selected: ${file.name}` : 'Choose Tile Image for Caliber Check'}
         </label>
 
         {/* 2. Hidden Native Input */}
