@@ -1,0 +1,9 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  /* Hides any scroll bar on the body */
+  overflow-x: hidden;
+  /* Prevent vertical bounce/scroll when content is exactly 100vh */
+  overflow-y: auto;
+}
