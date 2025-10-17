@@ -154,14 +154,14 @@ const Landing = () => {
           </div>
         </div>
         {/* footer */}
-        <footer className="footer">
+        <footer className="footer pt-4">
           <div className="footer-body d-flex justify-content-between mx-4 pb-3">
             <ul className="list-inline mb-0 p-0">
               <li className="list-inline-item"><a href="./dashboard/extra/privacy-policy.html">Privacy Policy</a></li>
               <li className="list-inline-item"><a href="./dashboard/extra/terms-of-service.html">Terms of Use</a></li>
             </ul>
             <div className="right-panel">
-              <p>© 2025 Bridging Hope. All Rights Reserved.</p>
+              <p>© 2025 Portobello America | Hackathon 2025 | All Rights Reserved</p>
             </div>
           </div>
         </footer>

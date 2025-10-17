@@ -46,7 +46,7 @@ const Mission = () => {
         <div className="col-12 col-md-3 card">
           <div className="card-body d-flex flex-column">
             <div className="flex-grow-1">
-              <h2 className="text-center col-12 mt-2">The Team</h2>
+              <h3 className="text-center col-12 mt-2">The Team</h3>
               <hr />
               <p className="col-12 mt-4"><i className="bi bi-heart-fill me-2 text-info"></i>Jamie Boyd</p>
               <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Braylon Trail</p>
@@ -55,7 +55,7 @@ const Mission = () => {
               <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Sebjin Kennedy</p>
             </div>
             {/* The link target needs to be a valid path/function */}
-            <Link to="/404" className="btn btn-secondary col-12">Contact Us!</Link>
+            <Link to="/404" className="btn btn-secondary col-12">Contact Us</Link>
           </div>
         </div>
 
@@ -63,14 +63,14 @@ const Mission = () => {
         <div className="col-12 col-md-3 card">
           <div className="card-body d-flex flex-column">
             <div className="flex-grow-1">
-              <h2 className="text-center col-12 mt-2">Features</h2>
+              <h3 className="text-center col-12 mt-2">Features</h3>
               <hr />
               <p className="col-12 mt-4 mb-0"><i className="bi bi-heart-fill me-2 text-info"></i>Caliber Scanning</p>
               <p className="col-12 mt-0 ms-4"><small className="fw-lighter fst-italic">Measuring Size of Tiles through Production</small></p>
               <p className="col-12 mt-2 mb-0"><i className="bi bi-heart-fill me-2 text-info"></i>Label Reader</p>
               <p className="col-12 mt-0 ms-4"><small className="fw-lighter fst-italic">Verification and packaging of Labels</small></p>
             </div>
-            <Link to="/faq" className="btn btn-secondary col-12">Frequently Asked Questions</Link>
+            <Link to="/faq" className="btn btn-secondary col-12">FAQ</Link>
           </div>
         </div>
       </div>
