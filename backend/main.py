@@ -18,6 +18,8 @@ from PIL import Image, ImageDraw, ImageFont
 import statistics
 from pydantic import BaseModel, Field
 import os
+from pydantic import BaseModel
+from difflib import SequenceMatcher
 
 # --- Config ---
 IMG_SIZE = 256
@@ -133,6 +135,140 @@ class OCRResponse(BaseModel):
     annotated_image_b64: Optional[str] = None
     label_png_b64: Optional[str] = None
 
+# --- models ---
+
+
+class CompareResponse(BaseModel):
+    same: bool
+    reason: str
+    scores: dict
+    text1: str
+    text2: str
+
+# --- helpers ---
+def read_bgr(upload: UploadFile):
+    data = np.frombuffer(upload.file.read(), np.uint8)
+    img = cv2.imdecode(data, cv2.IMREAD_COLOR)
+    if img is None:
+        raise ValueError(f"Invalid image: {upload.filename}")
+    return img
+
+def phash64(gray):
+    """Perceptual hash (64-bit) via DCT; returns a 64-length boolean array."""
+    g = cv2.resize(gray, (32, 32), interpolation=cv2.INTER_AREA)
+    g = np.float32(g)
+    dct = cv2.dct(g)      # 32x32
+    dct_low = dct[:8, :8] # keep top-left 8x8
+    med = np.median(dct_low[1:, 1:])  # ignore DC term
+    bits = (dct_low > med).flatten()
+    return bits
+
+def hamming(a, b):
+    return int(np.count_nonzero(a ^ b))
+
+def ssim_gray(a, b):
+    """Simple SSIM for grayscale images of the same size."""
+    a = a.astype(np.float64)
+    b = b.astype(np.float64)
+    C1 = (0.01 * 255) ** 2
+    C2 = (0.03 * 255) ** 2
+
+    mu1 = cv2.GaussianBlur(a, (11, 11), 1.5)
+    mu2 = cv2.GaussianBlur(b, (11, 11), 1.5)
+    mu1_sq = mu1 * mu1
+    mu2_sq = mu2 * mu2
+    mu1_mu2 = mu1 * mu2
+
+    sigma1_sq = cv2.GaussianBlur(a * a, (11, 11), 1.5) - mu1_sq
+    sigma2_sq = cv2.GaussianBlur(b * b, (11, 11), 1.5) - mu2_sq
+    sigma12   = cv2.GaussianBlur(a * b, (11, 11), 1.5) - mu1_mu2
+
+    ssim_map = ((2 * mu1_mu2 + C1) * (2 * sigma12 + C2)) / (
+                (mu1_sq + mu2_sq + C1) * (sigma1_sq + sigma2_sq + C2))
+    return float(ssim_map.mean())
+
+def ocr_text_from_bgr(bgr):
+    out = ocr.ocr(bgr, cls=True)
+    chunks = []
+    if out and isinstance(out[0], list):
+        for line in out[0]:
+            try:
+                _, (text, prob) = line
+                t = (text or "").strip()
+                if t:
+                    chunks.append(t)
+            except Exception:
+                continue
+    return " ".join(chunks)
+
+# --- endpoint ---
+@app.post("/compare", response_model=CompareResponse)
+async def compare(
+    file1: UploadFile = File(...),
+    file2: UploadFile = File(...),
+    text_weight: float = Query(0.5, ge=0.0, le=1.0, description="weight for OCR text similarity in final decision")
+):
+    try:
+        # read both
+        bgr1 = read_bgr(file1)
+        bgr2 = read_bgr(file2)
+
+        # resize to common size for SSIM / hist (keep aspect roughly)
+        target = (512, 512)
+        g1 = cv2.cvtColor(cv2.resize(bgr1, target, interpolation=cv2.INTER_AREA), cv2.COLOR_BGR2GRAY)
+        g2 = cv2.cvtColor(cv2.resize(bgr2, target, interpolation=cv2.INTER_AREA), cv2.COLOR_BGR2GRAY)
+
+        # pHash
+        h1 = phash64(g1)
+        h2 = phash64(g2)
+        phash_dist = hamming(h1, h2)      # 0..64 (lower = more similar)
+
+        # SSIM
+        ssim_val = ssim_gray(g1, g2)      # -1..1 (1 = identical; typically 0..1)
+
+        # Color histogram similarity (correlation)
+        hsv1 = cv2.cvtColor(cv2.resize(bgr1, target), cv2.COLOR_BGR2HSV)
+        hsv2 = cv2.cvtColor(cv2.resize(bgr2, target), cv2.COLOR_BGR2HSV)
+        hist1 = cv2.calcHist([hsv1], [0,1], None, [32,32], [0,180, 0,256])
+        hist2 = cv2.calcHist([hsv2], [0,1], None, [32,32], [0,180, 0,256])
+        cv2.normalize(hist1, hist1); cv2.normalize(hist2, hist2)
+        hist_corr = float(cv2.compareHist(hist1, hist2, cv2.HISTCMP_CORREL))  # -1..1
+
+        # OCR text similarity
+        txt1 = ocr_text_from_bgr(bgr1)
+        txt2 = ocr_text_from_bgr(bgr2)
+        text_sim = float(SequenceMatcher(None, txt1, txt2).ratio())  # 0..1
+
+        # Decision heuristic (tweak to your data)
+        # Consider "same" if both image structure and text match well.
+        # pHash <= 10 and SSIM >= 0.85 usually means visually the same.
+        img_ok = (phash_dist <= 10 and ssim_val >= 0.85) or (ssim_val >= 0.95)
+        # blend image vs text evidence
+        blended = (1 - text_weight) * max(0.0, (1 - phash_dist/64.0)*0.6 + (ssim_val)*0.4) + text_weight * text_sim
+        same = bool(img_ok or blended >= 0.85)
+
+        reason = (
+            f"pHashDist={phash_dist:.0f} (<=10 good), "
+            f"SSIM={ssim_val:.3f}, HistCorr={hist_corr:.3f}, "
+            f"TextSim={text_sim:.3f}, Score={blended:.3f}"
+        )
+
+        return CompareResponse(
+            same=same,
+            reason=reason,
+            scores={
+                "phash_distance": phash_dist,
+                "ssim": ssim_val,
+                "hist_correlation": hist_corr,
+                "text_similarity": text_sim,
+                "blended_score": blended,
+            },
+            text1=txt1,
+            text2=txt2,
+        )
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Compare failed: {type(e).__name__}: {e}")
 
 
 
