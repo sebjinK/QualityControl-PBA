@@ -10,14 +10,14 @@ const Mission = () => {
         <div className="col-12 col-md-6 ">
           <h2 className="text-center col-12 mt-5">Mission</h2>
           <hr />
-          <p className="text-gray-600 leading-relaxed">
-            We're building two powerful AI quality control tools to completely eliminate human error in tile manufacturing, bringing in automated efficiency and standardized consistency.
+          <p className="text-gray-600 leading-relaxed" style={{ textAlign: 'justify' }}>
+            We are building two powerful AI quality control tools to completely eliminate human error in tile manufacturing, bringing in automated efficiency and standardized consistency.
           </p>
 
           {/* Calibre Assessment */}
           <h5 className="font-semibold text-gray-800 mb-2">Calibre Analysis</h5>
           <ul className="list-circle ml-5">
-            <li>We're training a Convolutional Neural Network (CNN) to visually inspect every finished tile.</li>
+            <li>We have trained a Convolutional Neural Network (CNN) to visually inspect every finished tile.</li>
             <li>The system determines the tile's exact calibre (categorized 3, 4, or 5).</li>
           </ul>
 
