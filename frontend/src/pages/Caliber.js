@@ -89,9 +89,6 @@ function Caliber() { // Renamed from App to Caliber
           <p>
             <strong>Predicted Side:</strong> {result.predicted_side_cm.toFixed(2)} cm
           </p>
-          <p>
-            <strong>Confidence:</strong> {result.confidence}
-          </p>
         </div>
       )}
     </div>
