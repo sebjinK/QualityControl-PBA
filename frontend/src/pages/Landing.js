@@ -149,7 +149,7 @@ const Landing = () => {
             <li className="list-inline-item"><a href="./dashboard/extra/terms-of-service.html">Terms of Use</a></li>
           </ul>
           <div className="right-panel">
-            <p>© {year} Bridging Hope. All Rights Reserved.</p>
+            <p>© {year} Portobello America. All Rights Reserved.</p>
           </div>
         </div>
       </footer>
