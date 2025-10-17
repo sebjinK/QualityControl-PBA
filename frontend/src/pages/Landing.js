@@ -81,7 +81,7 @@ const Landing = () => {
                     </li>
                     <li className="nav-item">
                       <a
-                        className={`nav-link ms-4 ${activeSection === 'caliber' ? 'active' : ''}`}
+                        className={`nav-link ms-2 ${activeSection === 'caliber' ? 'active' : ''}`}
                         href="#"
                         onClick={() => setActiveSection('caliber')}
                       >
@@ -90,7 +90,7 @@ const Landing = () => {
                     </li>
                     <li className="nav-item">
                       <a
-                        className={`nav-link ms-4 ${activeSection === 'label' ? 'active' : ''}`}
+                        className={`nav-link ms-2 ${activeSection === 'label' ? 'active' : ''}`}
                         href="#"
                         onClick={() => setActiveSection('label')}
                       >
