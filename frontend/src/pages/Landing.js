@@ -137,7 +137,14 @@ const Landing = () => {
                 <div className="col-12 col-md-6" style={{ backgroundColor: 'rgba(180,180,180,.40)', minHeight: "100%" }}>
                   <h2 className="text-white mt-4 text-center">Quality Control for Tile Manufacturing using AI</h2>
                   <div className="row col-12 justify-content-center my-4">
-                    <Link to="/clienthelp" className="btn btn-primary col-6 mb-1">Documentation</Link>
+                    <a
+                      href="https://github.com/sebjinK/QualityControl-PBA"
+                      className="btn btn-primary col-6 mb-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Documentation
+                    </a>
                   </div>
                 </div>
               </div>
@@ -154,15 +161,15 @@ const Landing = () => {
           </div>
         </div>
         {/* footer */}
-        <footer className="footer pt-4">
+        <footer className="footer">
           <div className="footer-body d-flex justify-content-between mx-4 pb-3">
             <ul className="list-inline mb-0 p-0">
-              <li className="list-inline-item"><a href="./dashboardPrivacy Policy/extra/privacy-policy.html">Privacy Policy</a></li>
-              <li className="list-inline-item"><a>|</a></li>
+              <li className="list-inline-item"><a href="./dashboard/extra/privacy-policy.html">Privacy Policy</a></li>
+              <li className="list-inline-item">|</li>
               <li className="list-inline-item"><a href="./dashboard/extra/terms-of-service.html">Terms of Use</a></li>
             </ul>
             <div className="right-panel">
-              <p>© 2025 Portobello America | Hackathon 2025 | All Rights Reserved</p>
+              <p>© 2025 Portobello America | Hackathon 2025 - Team 1 | All Rights Reserved.</p>
             </div>
           </div>
         </footer>

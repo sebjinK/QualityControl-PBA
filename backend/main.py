@@ -17,11 +17,12 @@ import traceback
 from PIL import Image, ImageDraw, ImageFont
 import statistics
 from pydantic import BaseModel, Field
+import os
 
 # --- Config ---
 IMG_SIZE = 256
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-MODEL_PATH = "~/QualityControl-PBA/backend/square_regressor.pt"
+MODEL_PATH = os.path.expanduser("~\\Downloads\\QualitiyControl\\QualityControl-PBA\\backend\\square_regressor.pt")
 
 # --- Initialization and Configuration (Combined) ---
 app = FastAPI(title="Tile Quality Control API (CNN + OCR)")
