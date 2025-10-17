@@ -77,6 +77,28 @@ async def check_dashboard_session():
     # This route exists purely to satisfy the frontend's session check on mount.
     return {"status": "active"}
 
+# --- Schemas for CNN Prediction ---
+from pydantic import BaseModel
+
+class PredictionResponse(BaseModel):
+    predicted_side_cm: float
+    predicted_side_mm: float          # NEW
+    confidence: float = 1.0
+    caliber: int
+    rule: str
+
+def classify_caliber(cm: float) -> tuple[int, str]:
+    if cm < 2.0:
+        return 3, "cm < 2 → caliber 3"
+    elif 3.0 <= cm <= 4.0:
+        return 4, "3 ≤ cm ≤ 4 → caliber 4"
+    elif cm > 4.0:
+        return 5, "cm > 4 → caliber 5"
+    else:
+        return 3, "2 ≤ cm < 3 (unspecified) → defaulting to caliber 3"
+
+
+
 # --- Endpoint 1: CNN Calibre Prediction ---
 @app.post("/predict", response_model=PredictionResponse)
 async def predict(file: UploadFile = File(...)):
@@ -97,8 +119,17 @@ async def predict(file: UploadFile = File(...)):
         with torch.no_grad():
             y_pred = model(x).cpu().numpy().squeeze().item()
 
-        print(f"DEBUG: CNN Prediction complete. Result: {round(y_pred, 3)} cm.")
-        return PredictionResponse(predicted_side_cm=round(y_pred, 3))
+        cm = float(y_pred)
+        mm = cm * 10.0                       # ← convert here
+        caliber, rule = classify_caliber(cm)
+
+        return PredictionResponse(
+            predicted_side_cm=round(cm, 3),
+            predicted_side_mm=round(mm, 1),  # mm typically shown to 0–1 dp
+            confidence=1.0,
+            caliber=caliber,
+            rule=rule,
+        )
     except Exception as e:
         print(f"CRITICAL CNN ERROR in /predict: {type(e).__name__}: {e}. Traceback: {traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=f"Internal Server Error during CNN prediction: {type(e).__name__}: {e}")

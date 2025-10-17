@@ -84,13 +84,21 @@ function Caliber() { // Renamed from App to Caliber
       </form>
 
       {result && (
-        <div className="card w-50 mx-auto p-4 rounded-4 shadow-lg">
-          <h3 className="text-center mb-3">Prediction Result</h3>
-          <p>
-            <strong>Predicted Side:</strong> {result.predicted_side_cm.toFixed(2)} cm
-          </p>
-        </div>
-      )}
+  <div className="card w-50 mx-auto p-4 rounded-4 shadow-lg">
+    <h3 className="text-center mb-3">Prediction Result</h3>
+    <p>
+      <strong>Predicted Side:</strong>
+      {" "}{result.predicted_side_cm.toFixed(2)} cm
+      {" "}({Number(result.predicted_side_mm).toFixed(1)} mm)
+    </p>
+    <p>
+      <strong>Caliber:</strong> {result.caliber}
+      {result.rule && <span className="text-muted"> — {result.rule}</span>}
+    </p>
+  </div>
+)}
+
+
     </div>
   );
 }
