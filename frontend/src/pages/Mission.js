@@ -42,35 +42,20 @@ const Mission = () => {
       {/* More info cards (Areas Served, Partners, Features) */}
       <div className="col-12 row mt-4 mb-5 justify-content-around">
 
-        {/* Areas Served Card */}
-        <div className="col-12 col-md-3 card">
-          <div className="card-body">
-            <h2 className="text-center col-12 mt-2">Areas Served</h2>
-            <hr />
-            <p className="col-12 mt-4"><i className="bi bi-heart-fill me-2 text-info"></i>Algood</p>
-            <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Baxter</p>
-            <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Cookeville</p>
-            <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Crossville</p>
-            <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Cumberland County</p>
-            <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Monterey</p>
-            <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Putnam County</p>
-          </div>
-        </div>
-
         {/* Partners Card */}
         <div className="col-12 col-md-3 card">
           <div className="card-body d-flex flex-column">
             <div className="flex-grow-1">
-              <h2 className="text-center col-12 mt-2">Partners</h2>
+              <h2 className="text-center col-12 mt-2">The Team</h2>
               <hr />
-              <p className="col-12 mt-4"><i className="bi bi-heart-fill me-2 text-info"></i>DUO Mobile Missions</p>
-              <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Life Church</p>
-              <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Putnam County</p>
-              <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Steven's Street Baptist Church</p>
-              <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Upper Cumberland Family Justice Center</p>
+              <p className="col-12 mt-4"><i className="bi bi-heart-fill me-2 text-info"></i>Jamie Boyd</p>
+              <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Braylon Trail</p>
+              <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Guilermme Gripp</p>
+              <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Preston Harberts</p>
+              <p className="col-12 mt-2"><i className="bi bi-heart-fill me-2 text-info"></i>Sebjin Kennedy</p>
             </div>
             {/* The link target needs to be a valid path/function */}
-            <Link to="/404" className="btn btn-secondary col-12">Contact Us to Add Your Organization!</Link>
+            <Link to="/404" className="btn btn-secondary col-12">Contact Us!</Link>
           </div>
         </div>
 
@@ -80,12 +65,10 @@ const Mission = () => {
             <div className="flex-grow-1">
               <h2 className="text-center col-12 mt-2">Features</h2>
               <hr />
-              <p className="col-12 mt-4 mb-0"><i className="bi bi-heart-fill me-2 text-info"></i>Register Clients</p>
-              <p className="col-12 mt-0 ms-4"><small className="fw-lighter fst-italic">Add new clients to Bridging Hope</small></p>
-              <p className="col-12 mt-2 mb-0"><i className="bi bi-heart-fill me-2 text-info"></i>Log Visits</p>
-              <p className="col-12 mt-0 ms-4"><small className="fw-lighter fst-italic">Track the aid you give digitally</small></p>
-              <p className="col-12 mt-2 mb-0"><i className="bi bi-heart-fill me-2 text-info"></i>Search Clients</p>
-              <p className="col-12 mt-0 ms-4"><small className="fw-lighter fst-italic">Find existing client accounts with ease</small></p>
+              <p className="col-12 mt-4 mb-0"><i className="bi bi-heart-fill me-2 text-info"></i>Caliber Scanning</p>
+              <p className="col-12 mt-0 ms-4"><small className="fw-lighter fst-italic">Measuring Size of Tiles through Production</small></p>
+              <p className="col-12 mt-2 mb-0"><i className="bi bi-heart-fill me-2 text-info"></i>Label Reader</p>
+              <p className="col-12 mt-0 ms-4"><small className="fw-lighter fst-italic">Verification and packaging of Labels</small></p>
             </div>
             <Link to="/faq" className="btn btn-secondary col-12">Frequently Asked Questions</Link>
           </div>
@@ -99,7 +82,7 @@ const Mission = () => {
 
       {/* Developed and maintained with love */}
       <div className="col-12 row mb-5 justify-content-center">
-        <p className="text-center">Developed and maintained with<i className="bi bi-heart-fill ms-2 me-2 text-info"></i>by Business Information Technology and Computer Science students at Tennessee Technological University</p>
+        <p className="text-center">Developed and maintained with<i className="bi bi-heart-fill ms-2 me-2 text-info"></i>by Computer Science students at Tennessee Technological University</p>
       </div>
     </div>
   );

@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+pydantic
+pillow
+numpy
+torch   # or your working version
