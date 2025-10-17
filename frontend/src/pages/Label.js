@@ -15,6 +15,16 @@ const API_BASE =
 const OCR_PATH = "/ocr";
 
 export default function Label() {
+  function handleFileChange(e) {
+    const f = e.target.files[0];
+    if (!f) return;
+    setFile(f);
+    const url = URL.createObjectURL(f);
+    setPreview(url);
+    setResult(null);
+  }
+    const [preview, setPreview] = useState(null);
+
   const [file, setFile] = useState(null);
   const [imgURL, setImgURL] = useState(null);
   const [imgSize, setImgSize] = useState({ w: 0, h: 0 });
@@ -80,28 +90,47 @@ export default function Label() {
 
   return (
     <div className="container">
-      <h1>OCR Label Reader</h1>
-      <div className="card">
-        <input type="file" accept="image/*" onChange={onPick} />
-        <button disabled={!file || loading} onClick={onSubmit}>
-          {loading ? "Reading..." : "Read Text"}
-        </button>
+            <h2 className="pt-5 pb-2 text-center">Label Automation</h2>
+      <h5 className="pb-3 text-center text-muted">Using Convolusion Neural Networks</h5>
 
-        {result?.error && <div className="alert alert-danger mt-3">{result.error}</div>}
+      <div className="card w-50 mx-auto p-4 rounded-4 shadow-lg"> {/* ADDED rounded-4 and shadow-lg */}
+ <label htmlFor="file-upload" className="btn btn-outline-secondary w-100 mb-4 rounded-3 shadow-sm cursor-pointer">
+          {/* Display file name or default text */}
+          {file ? `File Selected: ${file.name}` : 'Choose Box Image'}
+        </label>
+         <p className="text-muted text-center">In production the ability to choose a picture will not be necessary.</p>
+        <p className="text-muted text-center">Images of tiles will be pulled live from the Qualitron.</p>
+
+
+        {/* 2. Hidden Native Input */}
+        <input
+          id="file-upload" // Linked to label via htmlFor
+          type="file"
+          accept="image/*"
+          onChange={handleFileChange}
+          className="d-none" // Hides the ugly default input
+        />
+
+        <button onClick={onSubmit} disabled={!file || loading} className="btn btn-primary w-100 shadow-sm mt-3">
+
+          {loading ? "Reading..." : "Generate Label"}
+        </button>
+        {result?.error && <div className="alert alert-danger mtS-3">{result.error}</div>}
+
 
         <div className="row">
           
 
           <div className="side">
-            <h3>Top-left</h3>
+            <h4 className="mt-4 mb-2 text-center">Box ID</h4>
             {first ? (
               <>
-                <div><b>Text:</b> {first.text}</div>
-                <div><b>Conf:</b> {first.prob.toFixed(2)}</div>
+                <div className="text-center"><b>Text:</b> {first.text} | <b>Conf:</b> {first.prob.toFixed(2)}</div>
               </>
             ) : <div>No text found.</div>}
 
-            <h3 style={{ marginTop: 16 }}>All words</h3>
+                        <h4 className="mt-2 mb-2 text-center">Label Details</h4>
+
             <ul className="list">
               {words.map((w, i) => (
                 <li key={i}>
