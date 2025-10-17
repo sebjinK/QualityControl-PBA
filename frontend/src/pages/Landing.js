@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import Mission from './Mission';
 import Caliber from './Caliber';
+import Label from './Label';
 
 { /*
   Filename:    Landing.js
@@ -11,37 +12,30 @@ import Caliber from './Caliber';
 
 
 const Landing = () => {
-  let newDate = new Date();
-  let year = newDate.getFullYear();
-  const [signInNavigator, setSignInNavigator] = React.useState("/signin");
   const [activeSection, setActiveSection] = useState('mission'); // Default to Mission
 
-  useEffect(() => {
-    async function checkSession() {
-      try {
-        let url = process.env.REACT_APP_BACKURL;
-
-        const response = await axios.get(url + "/api/dashboard", {
-          withCredentials: true, // Send cookies
-        });
-
-        if (response.status !== 200) {
-          //bad session id sign in direct to sign in page
-          setSignInNavigator("/signin");
-        }
-        else {
-          // If the response is successful, you can handle the data here
-          setSignInNavigator("/dashboard");
-        }
-      } catch (error) {
-        setSignInNavigator("/signin");
-      }
-    }
-    checkSession();
-  }, []);
 
   return (
     <React.Fragment>
+      <div
+        style={{
+          minHeight: "100vh",
+          width: "100vw",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: -1,
+          background:
+            localStorage.getItem("BurchCoin") === JSON.stringify(true)
+              ? "url('./images/PizzaBackground.png')"
+              : 'linear-gradient(to bottom, #fafafa, #fafafa, rgba(13, 110, 252, 0.15)), #ffffff',
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center center",
+          backgroundAttachment: 'fixed', // Add this for the fixed background
+        }}
+      />
+
       <div className="col-12 flex-grow-1">
         {/* navbar */}
         <nav className="nav navbar navbar-expand-xl navbar-light iq-navbar">
@@ -86,13 +80,22 @@ const Landing = () => {
                       Caliber Analysis
                     </a>
                   </li>
+                  <li className="nav-item">
+                    <a
+                      className={`nav-link ms-4 ${activeSection === 'label' ? 'active' : ''}`}
+                      href="#"
+                      onClick={() => setActiveSection('label')}
+                    >
+                      Label Automation
+                    </a>
+                  </li>
                 </ul>
               </div>
             </a>
 
             <div className="d-flex justify-content-around align-items-center">
-              <Link to={signInNavigator} className="btn btn-primary btn-sm align-items-center me-2">Sign In</Link>
-              <Link to="/register" className="btn btn-secondary btn-sm align-items-center">Register</Link>
+              <Link className="btn btn-primary btn-sm align-items-center me-2">Sign In</Link>
+              <Link className="btn btn-secondary btn-sm align-items-center">Register</Link>
             </div>
           </div>
         </nav>
@@ -136,6 +139,7 @@ const Landing = () => {
             <div id="content-section">
               {activeSection === 'mission' && <Mission />}
               {activeSection === 'caliber' && <Caliber />}
+              {activeSection === 'label' && <Label />}
             </div>
           </div>
 
@@ -149,11 +153,11 @@ const Landing = () => {
             <li className="list-inline-item"><a href="./dashboard/extra/terms-of-service.html">Terms of Use</a></li>
           </ul>
           <div className="right-panel">
-            <p>© {year} Bridging Hope. All Rights Reserved.</p>
+            <p>© 2025 Bridging Hope. All Rights Reserved.</p>
           </div>
         </div>
       </footer>
-    </React.Fragment>
+    </React.Fragment >
   );
 }
 
