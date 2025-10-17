@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
-import Mission from './Mission';
+import Home from './Home';
 import Caliber from './Caliber';
 import Label from './Label';
 
@@ -12,7 +12,7 @@ import Label from './Label';
 
 
 const Landing = () => {
-  const [activeSection, setActiveSection] = useState('mission'); // Default to Mission
+  const [activeSection, setActiveSection] = useState('home'); // Default to Home
 
 
   return (
@@ -71,12 +71,12 @@ const Landing = () => {
                   <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
                       <a
-                        className={`nav-link ms-4 ${activeSection === 'mission' ? 'active' : 'fw-light'}`}
+                        className={`nav-link ms-4 ${activeSection === 'home' ? 'active' : 'fw-light'}`}
                         aria-current="page"
                         href="#"
-                        onClick={() => setActiveSection('mission')}
+                        onClick={() => setActiveSection('home')}
                       >
-                        Mission
+                        Home
                       </a>
                     </li>
                     <li className="nav-item">
@@ -152,7 +152,7 @@ const Landing = () => {
 
             <div className="flex-grow-1">
               <div id="content-section">
-                {activeSection === 'mission' && <Mission />}
+                {activeSection === 'home' && <Home />}
                 {activeSection === 'caliber' && <Caliber />}
                 {activeSection === 'label' && <Label />}
               </div>
@@ -161,7 +161,7 @@ const Landing = () => {
           </div>
         </div>
         {/* footer */}
-        <footer className="footer">
+        <footer className="footer pt-3">
           <div className="footer-body d-flex justify-content-between mx-4 pb-3">
             <ul className="list-inline mb-0 p-0">
               <li className="list-inline-item"><a href="./dashboard/extra/privacy-policy.html">Privacy Policy</a></li>

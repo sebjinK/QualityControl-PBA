@@ -43,7 +43,7 @@ function Caliber() { // Renamed from App to Caliber
   return (
     <div className="container">
       <h2 className="pt-5 pb-2 text-center">Tile Caliber Analysis</h2>
-      <h5 className="pb-3 text-center text-muted">Using Convolusion Neural Networks</h5>
+      <h5 className="pb-3 text-center text-muted">Using Convolution Neural Networks</h5>
 
       <form onSubmit={handleUpload} className="card w-50 mx-auto p-4 rounded-4 shadow-lg"> {/* ADDED rounded-4 and shadow-lg */}
 

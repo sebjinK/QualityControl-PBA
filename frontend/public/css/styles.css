@@ -7,3 +7,11 @@ body {
   /* Prevent vertical bounce/scroll when content is exactly 100vh */
   overflow-y: auto;
 }
+
+.card {
+  border: 1px solid #DDDDDD !important
+}
+
+.footer {
+  border-top: 1px solid #DDDDDD !important
+}

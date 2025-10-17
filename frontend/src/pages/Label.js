@@ -115,8 +115,8 @@ export default function Label() {
       <h5 className="pb-3 text-center text-muted">Using Convolution Neural Networks</h5>
 
       {/* -------- OCR CARD -------- */}
+      <h6 className="mt-4 mb-2 text-center">Read Label (OCR)</h6>
       <div className="card w-50 mx-auto p-4 rounded-4 shadow-lg mb-5">
-        <h4 className="mb-3">Read Label (OCR)</h4>
 
         <label
           htmlFor="file-upload"
@@ -131,6 +131,10 @@ export default function Label() {
           onChange={handleFileChange}
           className="d-none"
         />
+
+        <p className="text-muted text-center">In production the ability to choose a picture will not be necessary.</p>
+        <p className="text-muted text-center">Images of labels will be pulled live from the camera.</p>
+
 
         <button
           onClick={onSubmit}
@@ -208,8 +212,8 @@ export default function Label() {
       </div>
 
       {/* -------- COMPARE CARD -------- */}
+      <h6 className="mt-4 mb-2 text-center">Compare Two Labels</h6>
       <div className="card w-50 mx-auto p-4 rounded-4 shadow-lg">
-        <h4 className="mb-3">Compare Two Labels</h4>
 
         <div className="mb-2">
           <label className="form-label">Image A</label>
@@ -248,7 +252,7 @@ export default function Label() {
             <h5 className="text-center pt-1 pb-3">Same? {cmp.same ? "Yes" : "No"}</h5>
             <div className="mb-4">{cmp.reason}</div>
             {cmp.scores && (
-              <pre style={{ background:"#f8fafc", padding:12, borderRadius:8}}>
+              <pre style={{ background: "#f8fafc", padding: 12, borderRadius: 8 }}>
                 {JSON.stringify(cmp.scores, null, 2)}
               </pre>
             )}

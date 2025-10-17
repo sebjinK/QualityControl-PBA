@@ -2,13 +2,13 @@ import React from 'react';
 // Assuming 'Link' is imported from 'react-router-dom' based on its usage
 import { Link } from 'react-router-dom';
 
-const Mission = () => {
+const Home = () => {
   return (
     <div className="container">
-      {/* Our Vision / Mission Section (Centered) */}
-      <div id="vision" className="col-12 row mb-5 justify-content-center">
+      {/* Our Vision / Home Section (Centered) */}
+      <div id="vision" className="col-12 row mb-3 justify-content-center">
         <div className="col-12 col-md-6 ">
-          <h2 className="text-center col-12 mt-5">Mission</h2>
+          <h2 className="text-center col-12 mt-5"><span class="opacity-50 pe-2">🙘</span> Quality Control AI Toolset <span class="opacity-50 ps-2">🙚</span></h2>
           <hr />
           <p className="text-gray-600 leading-relaxed" style={{ textAlign: 'justify' }}>
             We are building two powerful AI quality control tools to completely eliminate human error in tile manufacturing, bringing in automated efficiency and standardized consistency.
@@ -17,22 +17,23 @@ const Mission = () => {
           {/* Calibre Assessment */}
           <h5 className="font-semibold text-gray-800 mb-2">Calibre Analysis</h5>
           <ul className="list-circle ml-5">
-            <li>We have trained a Convolutional Neural Network (CNN) to visually inspect every finished tile.</li>
-            <li>The system determines the tile's exact calibre (categorized 3, 4, or 5).</li>
+            <li>We trained a Convolutional Neural Network (CNN) to inspect finished tiles.</li>
+            <li>The system determines the tile's exact calibre in mm (categorized 3, 4, or 5).</li>
           </ul>
 
           {/* Automated Labeling */}
           <h5 className="font-semibold text-gray-800 mb-2">Label Automation</h5>
           <ul className="list-circle ml-5">
-            <li>We use computer vision to quickly read the existing product ID printed on the box.</li>
-            <li>A new, correct label is automatically printed with all the shipment details.</li>
+            <li>We use a CNNs with OCR to quickly read the product ID printed on the box.</li>
+            <li>A new, correct label will be printed with all the shipment details.</li>
+            <li>Box labels can be put against printed labels to verify they are the same.</li>
           </ul>
 
         </div>
       </div>
 
       {/* More info cards (Areas Served, Partners, Features) */}
-      <div className="col-12 row mt-4 mb-3 gap-5 justify-content-center">
+      <div className="col-12 row mt-4 gap-5 justify-content-center">
 
         {/* Partners Card */}
         <div className="col-12 col-md-3 card">
@@ -75,4 +76,4 @@ const Mission = () => {
   );
 };
 
-export default Mission;
+export default Home;
