@@ -6,10 +6,20 @@ import React, { useState, useEffect, useRef } from "react";
 const API = "http://localhost:8000/ocr"; // <-- FIXED: Defined the missing API constant
 
 function Label() { // Renamed from App to Label
+  function handleFileChange(e) {
+    const f = e.target.files[0];
+    if (!f) return;
+    setFile(f);
+    const url = URL.createObjectURL(f);
+    setPreview(url);
+    setResult(null);
+  }
+
   const [file, setFile] = useState(null);
   const [imgURL, setImgURL] = useState(null);
   const [imgSize, setImgSize] = useState({ w: 0, h: 0 });
   const [loading, setLoading] = useState(false);
+  const [preview, setPreview] = useState(null);
   const [result, setResult] = useState(null);
   const imgRef = useRef(null); // <-- FIX: Changed to useRef(null), ensuring it's available.
 
@@ -76,11 +86,31 @@ function Label() { // Renamed from App to Label
 
   return (
     <div className="container">
-      <h1>OCR Label Reader</h1>
-      <div className="card">
-        <input type="file" accept="image/*" onChange={onPick} />
-        <button disabled={!file || loading} onClick={onSubmit}>
-          {loading ? "Reading..." : "Read Text"}
+      <h2 className="pt-5 pb-2 text-center">Label Automation</h2>
+      <h5 className="pb-3 text-center text-muted">Using Convolusion Neural Networks</h5>
+
+      <div className="card w-50 mx-auto p-4 rounded-4 shadow-lg"> {/* ADDED rounded-4 and shadow-lg */}
+
+        <label htmlFor="file-upload" className="btn btn-outline-secondary w-100 mb-4 rounded-3 shadow-sm cursor-pointer">
+          {/* Display file name or default text */}
+          {file ? `File Selected: ${file.name}` : 'Choose Box Image'}
+        </label>
+
+        {/* 2. Hidden Native Input */}
+        <input
+          id="file-upload" // Linked to label via htmlFor
+          type="file"
+          accept="image/*"
+          onChange={handleFileChange}
+          className="d-none" // Hides the ugly default input
+        />
+
+        <p className="text-muted text-center">In production the ability to choose a picture will not be necessary.</p>
+        <p className="text-muted text-center">Images of tiles will be pulled live from the Qualitron.</p>
+
+        <button type="submit" disabled={!file || loading} className="btn btn-primary w-100 shadow-sm mt-3">
+
+          {loading ? "Reading..." : "Generate Label"}
         </button>
 
         {/* Display error message if one exists */}
@@ -103,7 +133,6 @@ function Label() { // Renamed from App to Label
           </div>
 
           <div className="side">
-            <h3>Words</h3>
             <ul className="list">
               {words.map((w, i) => (
                 <li key={i}>

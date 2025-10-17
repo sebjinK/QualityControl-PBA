@@ -71,7 +71,7 @@ const Landing = () => {
                   <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
                       <a
-                        className={`nav-link ms-4 ${activeSection === 'mission' ? 'active' : ''}`}
+                        className={`nav-link ms-4 ${activeSection === 'mission' ? 'active' : 'fw-light'}`}
                         aria-current="page"
                         href="#"
                         onClick={() => setActiveSection('mission')}
@@ -81,7 +81,7 @@ const Landing = () => {
                     </li>
                     <li className="nav-item">
                       <a
-                        className={`nav-link ms-2 ${activeSection === 'caliber' ? 'active' : ''}`}
+                        className={`nav-link ms-2 ${activeSection === 'caliber' ? 'active' : 'fw-light'}`}
                         href="#"
                         onClick={() => setActiveSection('caliber')}
                       >
@@ -90,7 +90,7 @@ const Landing = () => {
                     </li>
                     <li className="nav-item">
                       <a
-                        className={`nav-link ms-2 ${activeSection === 'label' ? 'active' : ''}`}
+                        className={`nav-link ms-2 ${activeSection === 'label' ? 'active' : 'fw-light'}`}
                         href="#"
                         onClick={() => setActiveSection('label')}
                       >

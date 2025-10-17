@@ -50,7 +50,7 @@ function Caliber() { // Renamed from App to Caliber
         {/* 1. Styled Label/Button */}
         <label htmlFor="file-upload" className="btn btn-outline-secondary w-100 mb-4 rounded-3 shadow-sm cursor-pointer">
           {/* Display file name or default text */}
-          {file ? `File Selected: ${file.name}` : 'Choose Tile Image for Caliber Check'}
+          {file ? `File Selected: ${file.name}` : 'Choose Tile Image'}
         </label>
 
         {/* 2. Hidden Native Input */}
@@ -78,8 +78,8 @@ function Caliber() { // Renamed from App to Caliber
         <p className="text-muted text-center">Images of tiles will be pulled live from the Qualitron.</p>
 
         {/* Use mt-4 for separation from the preview, keeping it inside the padded card */}
-        <button type="submit" disabled={!file || loading} className="btn btn-primary w-100 shadow-sm">
-          {loading ? "Predicting..." : "Upload & Predict"}
+        <button type="submit" disabled={!file || loading} className="btn btn-primary w-100 shadow-sm mt-3">
+          {loading ? "Predicting..." : "Analyze Tile Caliber"}
         </button>
       </form>
 

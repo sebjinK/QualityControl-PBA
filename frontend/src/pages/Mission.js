@@ -22,7 +22,7 @@ const Mission = () => {
           </ul>
 
           {/* Automated Labeling */}
-          <h5 className="font-semibold text-gray-800 mb-2">Label Verification</h5>
+          <h5 className="font-semibold text-gray-800 mb-2">Label Automation</h5>
           <ul className="list-circle ml-5">
             <li>We use computer vision to quickly read the existing product ID printed on the box.</li>
             <li>A new, correct label is automatically printed with all the shipment details.</li>
@@ -59,7 +59,7 @@ const Mission = () => {
               <hr />
               <p className="col-12 mt-4 mb-0"><i className="bi bi-heart-fill me-2 text-info"></i>Caliber Analysis</p>
               <p className="col-12 mt-0 ms-4"><small className="fw-lighter fst-italic">Measuring Size of Tiles through Production</small></p>
-              <p className="col-12 mt-2 mb-0"><i className="bi bi-heart-fill me-2 text-info"></i>Label Verification</p>
+              <p className="col-12 mt-2 mb-0"><i className="bi bi-heart-fill me-2 text-info"></i>Label Automation</p>
               <p className="col-12 mt-0 ms-4"><small className="fw-lighter fst-italic">Verification and packaging of Labels</small></p>
             </div>
             <Link to="/faq" className="btn btn-secondary col-12">FAQ</Link>
